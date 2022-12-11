@@ -11,9 +11,6 @@ class Tela_Login:
             [sg.Text('Login', size=(30,1)), sg.Input(size=(30,1), key='login')],
             [sg.Text('Senha', size=(30,1)), sg.Input(size=(30,1), key='senha', password_char='*')],
             [sg.Text('Palavra-chave', size=(30,1)), sg.Input(size=(30,1), key='p_chave')],
-            [sg.Text('Deixe sua mensagem personalizada abaixo')],
-            [sg.Text('Continue a frase: "Olá (nome da pessoa), tudo bem? "'), sg.Input(size=(100,50), key=('texto'))],
-            [sg.Text('Exemplo: "Meu nome é Bruno, sou Contador e estou Bacharelando Engenharia de Software, ficaria muito feliz que fizesse parte do meu network. Desde já, sucesso!"')],
             [sg.Button('Iniciar')]
         ]
 
@@ -26,7 +23,7 @@ class Tela_Login:
                 user = self.janela['login'].get()
                 p_chave = self.janela['p_chave'].get()
                 password = self.janela['senha'].get()
-                mensagem = self.janela['texto'].get()
+
 
                 if eventos == 'Iniciar':
                     if validate_email(user) == True and len(password) > 8 and len(p_chave) > 2:
