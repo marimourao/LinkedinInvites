@@ -42,11 +42,12 @@ class Linkedin_bot:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
 
-    @staticmethod
-    def digite_como_pessoa(frase, onde_digitar):
-        for letra in frase:
-            onde_digitar.send_keys(letra)
-            time.sleep(random.randint(1,10)/60)
+# Desmarque aqui caso você queira enviar mensagem junto com o convite
+#    @staticmethod
+#    def digite_como_pessoa(frase, onde_digitar):
+#        for letra in frase:
+#            onde_digitar.send_keys(letra)
+#            time.sleep(random.randint(1,10)/60)
 
     def printt(self): #Este foi apenas um estudo para criar arquivo txt com dados extraidos da web.
         driver = self.driver
@@ -55,7 +56,7 @@ class Linkedin_bot:
             print(qtd_tag)
             for cada_tag in range(0, int(qtd_tag)):
                 try:
-                    arquivo.write('esse é o print ' + str(cada_tag) + ' ' + driver.find_elements_by_tag_name('span')[cada_tag].text + '\n') #Lembre sempre do caraio do 'str' quando for printar ou write.
+                    arquivo.write('esse é o print ' + str(cada_tag) + ' ' + driver.find_elements_by_tag_name('span')[cada_tag].text + '\n') #Lembre sempre do 'str' quando for printar ou write.
                 except:
                     print('erro na tag ' + str(cada_tag) + '!')
 
@@ -79,14 +80,14 @@ class Linkedin_bot:
 
                 if nome_botao_conexao == 'Conectar':
                     try:
-                        texto_frase = 'Olá, ' + nome_da_conexao + ', tudo bem? ' + mensagem
+                        #texto_frase = 'Olá, ' + nome_da_conexao + ', tudo bem? ' + mensagem Não enviar mensagem
                         time.sleep(1)
                         driver.find_element_by_xpath("//*[@class='reusable-search__result-container '][{}]//*[@class='artdeco-button__text']".format(cada_conexao + 1)).click()
                         #driver.find_elements_by_class_name('reusable-search__result-container ')[cada_conexao].find_element_by_xpath('div/div/div[3]/div/button/span').click()
                         time.sleep(2)
-                        driver.find_element_by_xpath('/html/body/div[3]/div/div/div[3]/button[1]/span').click()
-                        local_onde_digitar = driver.find_element_by_id('custom-message')
-                        self.digite_como_pessoa(texto_frase, local_onde_digitar)
+#                        driver.find_element_by_xpath('/html/body/div[3]/div/div/div[3]/button[1]/span').click() #Desmarque aqui caso você queira enviar mensagem
+#                        local_onde_digitar = driver.find_element_by_id('custom-message')  #Desmarque aqui caso você queira enviar mensagem
+#                        self.digite_como_pessoa(texto_frase, local_onde_digitar)  #Desmarque aqui caso você queira enviar mensagem
                         time.sleep(random.randint(1, 3))
                         driver.find_element_by_xpath('/html/body/div[3]/div/div/div[3]/button[2]/span').click()
                         time.sleep(2)
